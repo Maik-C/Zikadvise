@@ -1,0 +1,27 @@
+<html ng-app>
+<head>
+  <title>AngularJS</title>
+</head>
+<body ng-controller="TodoController">
+
+<ul>
+  <li ng-repeat="todo in todos">
+    <input type="checkbox" ng-model="todo.completed">
+    {{ todo.name }}
+  </li>
+</ul>
+
+<script>
+  function TodoController($scope){
+    $scope.todos = [
+      { name: 'Showing Angular Works', completed: true },
+      { name: 'Delve into backend grease', completed: false },
+    ]
+  }
+</script>
+  
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+</body>
+</html>
+
+

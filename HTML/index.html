@@ -44,8 +44,8 @@
             <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
                 <li class="active"><a href="index.html">Home</a></li>
-                <li><a href="factSheet.html">Info</a></li>
-				  <li><a href="forum.html">Contact</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
 				
 				<!-- just to show how dropdown menus can be done
                 <li><a href="#tablebooking">Table Booking</a></li>
@@ -123,10 +123,20 @@
 			<script>
 			var locations = [
 				['San Diego, CA', 33.890542, 151.274856, "address 1"],
-				['Tijuana', 33.923036, 151.259052, "address 2"]
+				['Tijuana', 33.923036, 151.259052, "address 2"],
+				['Nevada', 33.923036, 151.259052, "address 2"],
+				['Puerto Rico', 33.923036, 151.259052, "address 2"],
+				['Cuba', 33.923036, 151.259052, "address 2"],
+				['Venezuela', 33.923036, 151.259052, "address 2"],
+				['New York, NY', 33.890542, 151.274856, "address 1"],
+				['Washington', 33.923036, 151.259052, "address 2"],
+				['Kenia', 33.923036, 151.259052, "address 2"],
+				['Dominican Republic', 33.923036, 151.259052, "address 2"],
+				['Havana', 33.923036, 151.259052, "address 2"],
+				['Kingston', 33.923036, 151.259052, "address 2"]
 			];
 			var content = [
-				["text"], 
+				['text'], 
 				['more text']
 			];
 			var geocoder = new google.maps.Geocoder();
@@ -137,12 +147,12 @@
 			{
 			var mapProp = {
 			  center:myCenter,
-			  zoom:5,
+			  zoom:4,
 			  mapTypeId:google.maps.MapTypeId.ROADMAP
 			  };
 			 
 			var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-			var infowindow = new google.maps.InfoWindow();
+			
 			var i;
 			for(i = 0; i < locations.length; i++)
 			{
@@ -158,10 +168,12 @@
 					marker.setMap(map);
 				
 					// Info open
-					google.maps.event.addListener(marker, 'click', function(){
-						infowindow.close();
-						infowindow.setContent(content[0]);
-						infowindow.open(map, marker);
+					var infowindow = new google.maps.InfoWindow({
+					  content:'<b><i>User:</b></i> TweetImmune <b>Tweets:</b> Nearly half of Americans mistakenly think #Zika is fatal https://t.co/jzO2qO8FoC', 
+					  });
+
+					google.maps.event.addListener(marker, 'click', function() {
+					  infowindow.open(map,marker);
 					  });
 				})
 			}
